@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup as soup
 import pandas as pd
 import datetime as dt
 
-
 def scrape_all():
     # Initiate headless driver for deployment
     browser = Browser("chrome", executable_path="chromedriver", headless=True)
@@ -23,7 +22,6 @@ def scrape_all():
     # Stop webdriver and return data
     browser.quit()
     return data
-
 
 def mars_news(browser):
 
@@ -51,7 +49,6 @@ def mars_news(browser):
         return None, None
 
     return news_title, news_p
-
 
 def featured_image(browser):
     # Visit URL
