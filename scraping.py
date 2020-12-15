@@ -98,14 +98,20 @@ def mars_facts():
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html(classes="table table-striped")
 
+
+
 def mars_hemispheres(browser):
 # Add Hemisphere data
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(url)
-    browser.find_by_css("a.product-item")
-    links = browser.find_by_css("a.product-item h3")
 
     hemisphere_image_urls = []
+
+    browser.find_by_css("a.product-item")
+    links = browser.find_by_css("a.product-item h3")
+    #print(f'number of links {len(links}')
+
+    
 
     for i in range(len(links)):
         hemisphere = {}
@@ -118,10 +124,9 @@ def mars_hemispheres(browser):
         print(image_link)
         print(title)
         hemisphere_image_urls.append({"Title": title, "Image_link": image_link})         
-
-        return hemisphere_image_urls
-
         browser.back()
+    return hemisphere_image_urls
+
 
 if __name__ == "__main__":
     print(scrape_all())
